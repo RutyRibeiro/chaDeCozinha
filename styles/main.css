@@ -1,43 +1,117 @@
-*{
+* {
     outline: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-header{
-    position:relative;
-    height: 140px;
-    background: linear-gradient(90deg,#d87685 7%,rgb(104, 54, 22) 100%);
+
+html {
+    margin: 0px;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7 {
+    font-family: Poppins, sans-serif;
+    font-weight: 300;
+}
+
+p,
+span,
+a,
+div {
+    font-family: Poppins, sans-serif;
+}
+
+header {
+    height: 75px;
+    width: 100%;
+    background: linear-gradient(to bottom right, rgb(160, 51, 67) 5%, rgb(161, 71, 85) 15%, #d87685 54%);
     display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Sansita Swashed', cursive;
-    border-bottom: 1px solid #571c1c09;
+    /* border-bottom: 1px solid #571c1c09; */
     box-shadow: 5px 1px 10px rgba(7, 7, 7, 0.295);
-    
+
 }
-.container-logo{
-    position:absolute;
-    height: 75px ;
-    width: 150px;
-    margin: 10px;
-    left:10px;
+
+.wrapper-header {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
 }
-.container-logo img{
-    height: 100%    
-}
-.container-header{
-    margin: 30px auto;
-    /* background: grey; */
-    width: 200px;
+
+.wrapper-header .container-logo {
+    height: 100%;
     text-align: center;
-    
-    
 }
-.cha{
-    /* background: pink; */
-    color: rgb(245, 240, 243);
-    
+
+.container-logo img {
+    height: 100%;
+    max-width: 100%;
 }
-.titulo{
-    padding-top: 5px;
-    /* background-color: red; */
-    font-size: 40px;
-    color: rgb(246, 246, 246);
+
+.wrapper-header .container-user {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    width: 90px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+}
+
+.wrapper-header .container-user {
+    cursor: pointer;
+}
+
+.container-user .user-icon {
+    width: 25px;
+    height: 25px;
+
+}
+
+.user-icon .person-icon {
+    background: url(../img/person.svg) no-repeat;
+    width: 25px;
+    height: 25px;
+}
+
+
+main {
+    padding: 25px 0;
+    height: calc(100vh - 75px);
+    display: flex;
+    justify-content: center;
+
+}
+
+main .container-items {
+    width: 70%;
+    max-width: 425px;
+    height: 230px;
+    background-color: rgb(251, 249, 249);
+    border-radius: 12px;
+    border: 1px solid rgb(219, 217, 217);
 }
