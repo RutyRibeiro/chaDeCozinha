@@ -12,6 +12,8 @@ html {
 
 body {
     min-height: 100vh;
+    background-color: #FBE0E0;
+
 }
 
 h1,
@@ -69,15 +71,17 @@ header {
     position: absolute;
     right: 10px;
     top: 20px;
-    width: 90px;
+    width: 110px;
     height: 35px;
     background: rgba(255, 255, 255, 0.1);
+    color: #000;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10px;
+    padding: 0 5px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    text-decoration: none;
 
 }
 
@@ -85,16 +89,24 @@ header {
     cursor: pointer;
 }
 
+.user-name h4 {
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 74px;
+}
+
 .container-user .user-icon {
     width: 25px;
     height: 25px;
+    margin-left: 5px;
 
 }
 
 .user-icon .person-icon {
     background: url(../img/person.svg) no-repeat;
-    width: 25px;
-    height: 25px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -177,6 +189,12 @@ main .sales {
     justify-content: center;
     color: #f1f1f1;
     font-weight: bold;
+    transition: all 0.2s linear;
+}
+
+main .sales:hover {
+    background: #1c9f34;
+    cursor: pointer;
 }
 
 
