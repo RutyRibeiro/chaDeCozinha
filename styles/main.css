@@ -40,8 +40,7 @@ header {
     align-items: center;
     justify-content: center;
     font-family: 'Sansita Swashed', cursive;
-    /* border-bottom: 1px solid #571c1c09; */
-    box-shadow: 5px 1px 10px rgba(7, 7, 7, 0.295);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 
 }
 
@@ -109,9 +108,28 @@ main {
 
 main .container-items {
     width: 70%;
-    max-width: 425px;
-    height: 230px;
+    max-width: 600px;
+    height: 400px;
     background-color: rgb(251, 249, 249);
+    /* background-color: red; */
     border-radius: 12px;
-    border: 1px solid rgb(219, 217, 217);
+    border: 1px solid rgba(219, 217, 217, 0.185);
+    /* /* box-shadow: 5px 1px 10px rgba(7, 7, 7, 0.295); */
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    display: flex;
+    padding: 15px 32px;
+
+}
+
+
+
+
+@media (max-width:768px) {
+    main .container-items {
+        max-width: 400px;
+        height: 400px;
+        justify-content: center;
+    }
+
+
 }
