@@ -1,0 +1,43 @@
+*{
+    outline: 0;
+    margin: 0;
+}
+header{
+    position:relative;
+    height: 140px;
+    background: linear-gradient(90deg,#d87685 7%,rgb(104, 54, 22) 100%);
+    display: flex;
+    font-family: 'Sansita Swashed', cursive;
+    border-bottom: 1px solid #571c1c09;
+    box-shadow: 5px 1px 10px rgba(7, 7, 7, 0.295);
+    
+}
+.container-logo{
+    position:absolute;
+    height: 75px ;
+    width: 150px;
+    margin: 10px;
+    left:10px;
+}
+.container-logo img{
+    height: 100%    
+}
+.container-header{
+    margin: 30px auto;
+    /* background: grey; */
+    width: 200px;
+    text-align: center;
+    
+    
+}
+.cha{
+    /* background: pink; */
+    color: rgb(245, 240, 243);
+    
+}
+.titulo{
+    padding-top: 5px;
+    /* background-color: red; */
+    font-size: 40px;
+    color: rgb(246, 246, 246);
+}
