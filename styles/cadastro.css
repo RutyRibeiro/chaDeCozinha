@@ -1,0 +1,48 @@
+.container-info .info {
+    text-align: center;
+}
+
+.container-form {
+    width: 100%;
+}
+
+.container-form div {
+    margin: 14px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-form .form-input {
+    width: 80%;
+    max-width: 148px;
+    padding-left: 10px;
+}
+
+main button {
+    width: 100%;
+    background: #24d244;
+    height: 35px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f6f1f1;
+    font-weight: bold;
+    transition: all 0.2s linear;
+    margin-top: 15px;
+    border: 1px solid rgb(226, 223, 223);
+}
+
+main button:hover {
+    background: #1c9f34;
+    cursor: pointer;
+}
+
+@media (min-width:768px) {
+    .container-form .form-input {
+
+        max-width: 308px;
+    }
+
+
+}

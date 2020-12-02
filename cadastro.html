@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Chá de cozinha T&A</title>
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/cadastro.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <div class="wrapper-header">
+            <a href="./index.html" class="container-logo">
+                <img src="./img/brasao.png" alt="Logo">
+            </a>
+
+            <div class="container-user">
+                <div class="user-name">
+                    <h4>Login</h4>
+                </div>
+                <div class="user-icon">
+                    <div class="person-icon"></div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <div class=" container-items">
+            <div class="container-info">
+                <h1 class="info">Cadastre-se</h1>
+            </div>
+            <div class="container-form">
+                <div class="container-name">
+                    <label for="nome-cadastro">Nome:
+                    </label>
+                    <input type="text" class="form-input"
+                        id="nome-cadastro"
+                        placeholder='Ex: Maria Joaquina'>
+                </div>
+                <div class="container-tel">
+                    <label for="tel-cadastro">Telefone:
+                    </label>
+                    <input type="text" class="form-input"
+                        id="tel-cadastro"
+                        placeholder='Ex: 11999999999'>
+                </div>
+
+                <div class="container-senha">
+                    <label for="senha-cadastro">Senha:
+                    </label>
+                    <input type="password"
+                        id="senha-cadastro"
+                        class="form-input">
+                </div>
+
+                <div class="container-confsenha">
+                    <label for="confsenha-cadastro">Confirme
+                        a
+                        senha: </label>
+                    <input type="password"
+                        id="confsenha-cadastro"
+                        class="form-input">
+                </div>
+            </div>
+            <button class="btn-cadastro" id="btn-cadastrar">Cadastrar</button>
+        </div>
+    </main>
+    <script src="./scripts/cadastro.js"></script>
+</body>
+
+</html>
