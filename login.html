@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -6,6 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
     <title>Chá de cozinha T&A</title>
+    <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -35,7 +36,36 @@
 
     </header>
     <main>
+        <div class="container-info">
+            <h1 class="info">Cadastre-se</h1>
+        </div>
+        <div class="container-form">
+            <div class="container-name">
+                <label for="nome-cadastro">Nome: </label>
+                <input type="text" class="form-input"
+                    id="nome-cadastro">
+            </div>
+            <div class="container-tel">
+                <label for="tel-cadastro">Telefone: </label>
+                <input type="text" class="form-input"
+                    id="tel-cadastro">
+            </div>
 
+            <div class="container-senha">
+                <label for="senha-cadastro">Senha: </label>
+                <input type="password" id="senha-cadastro"
+                    class="form-input">
+            </div>
+
+            <div class="container-confsenha">
+                <label for="confsenha-cadastro">Confirme a
+                    senha: </label>
+                <input type="password"
+                    id="confsenha-cadastro"
+                    class="form-input">
+            </div>
+        </div>
+        <button class="btn-cadastro">Cadastrar</button>
     </main>
 
 </body>
