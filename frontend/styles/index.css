@@ -3,7 +3,7 @@
     align-items: start;
     justify-content: space-between;
     margin-bottom: 15px;
-
+    width: 100%;
 
 }
 
@@ -24,6 +24,7 @@
 
 .image-description .description-elements {
     margin: 0 32px;
+    width: 100%;
 }
 
 .description-elements .product-name {
