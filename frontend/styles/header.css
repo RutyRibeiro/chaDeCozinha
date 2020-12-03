@@ -10,7 +10,7 @@ header {
 
 }
 
-.wrapper-header {
+header .wrapper-header {
     position: relative;
     max-width: 1200px;
     width: 100%;
@@ -46,6 +46,7 @@ header {
     padding: 0 5px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     text-decoration: none;
+    transition: 0.4s all linear;
 
 }
 
@@ -71,4 +72,15 @@ header {
     background: url(../img/person.svg) no-repeat;
     width: 100%;
     height: 100%;
+}
+
+@media (max-width:415px) {
+    header .wrapper-header {
+        justify-content: start;
+        padding-left: 15px
+    }
+
+    .wrapper-header .container-user {
+        width: 175px;
+    }
 }

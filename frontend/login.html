@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -8,6 +8,7 @@
     <title>Chá de cozinha T&A</title>
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/login.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap"
@@ -36,36 +37,28 @@
 
     </header>
     <main>
-        <div class="container-info">
-            <h1 class="info">Cadastre-se</h1>
-        </div>
-        <div class="container-form">
-            <div class="container-name">
-                <label for="nome-cadastro">Nome: </label>
-                <input type="text" class="form-input"
-                    id="nome-cadastro">
+        <div class="container-items">
+            <div class="container-info">
+                <h1 class="info">Entrar</h1>
             </div>
-            <div class="container-tel">
-                <label for="tel-cadastro">Telefone: </label>
-                <input type="text" class="form-input"
-                    id="tel-cadastro">
-            </div>
+            <div class="container-form">
+                <div class="container-tel">
+                    <label for="tel-login">Telefone:
+                    </label>
+                    <input type="text" class="form-input"
+                        id="tel-login"
+                        placeholder="(99) 11 9999-9999">
+                </div>
 
-            <div class="container-senha">
-                <label for="senha-cadastro">Senha: </label>
-                <input type="password" id="senha-cadastro"
-                    class="form-input">
+                <div class="container-senha">
+                    <label for="senha-login">Senha:
+                    </label>
+                    <input type="password" id="senha-login"
+                        class="form-input">
+                </div>
             </div>
-
-            <div class="container-confsenha">
-                <label for="confsenha-cadastro">Confirme a
-                    senha: </label>
-                <input type="password"
-                    id="confsenha-cadastro"
-                    class="form-input">
-            </div>
+            <button class="btn-login">Login</button>
         </div>
-        <button class="btn-cadastro">Cadastrar</button>
     </main>
 
 </body>
