@@ -8,7 +8,7 @@ function limpaCampos(parametro) {
     parametro.value = ''
 }
 
-function cadastrar() {
+async function cadastrar() {
     const nome = document.querySelector('input#nome-cadastro')
     const senha = document.querySelector('input#senha-cadastro')
     const confsenha = document.querySelector('input#confsenha-cadastro')
@@ -31,8 +31,10 @@ function cadastrar() {
     else {
         const nomeBD = nome.value.trim()
         const telefoneBD = (telefone.value.replaceAll(' ', '')).replace(/[^0-9]/g, '')
-        console.log(nomeBD)
-        console.log(senha.value);
-        console.log(telefoneBD);
-    }
+        const senhaBD = senha.value
+        console.log(nomeBD,telefoneBD,senhaBD)
+        const response = await axios.post('http://localhost:3000', {"nome":nomeBD,"telefone":telefoneBD,"senha":senhaBD})
+        const data = response.data
+        console.log(data)
+    }   
 }
