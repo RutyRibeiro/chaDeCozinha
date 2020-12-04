@@ -1,10 +1,16 @@
 const express =require('express')
 const cors = require('cors')
 const app = express()
-
+app.use(cors())
 app.use(express.json())
-app.get('/', (request, response)=>{
-    response.send('Ok')
+app.post('/', (request, response)=>{
+    const nome = request.body.nome
+    const telefone = request.body.telefone
+    const senha = request.body.senha
+
+    response.status(200).send({nome,telefone,senha})
+
+    
 
 })
 
