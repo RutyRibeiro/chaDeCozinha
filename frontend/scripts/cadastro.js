@@ -32,9 +32,9 @@ async function cadastrar() {
         const nomeBD = nome.value.trim()
         const telefoneBD = (telefone.value.replaceAll(' ', '')).replace(/[^0-9]/g, '')
         const senhaBD = senha.value
-        console.log(nomeBD,telefoneBD,senhaBD)
-        const response = await axios.post('http://localhost:3000', {"nome":nomeBD,"telefone":telefoneBD,"senha":senhaBD})
+        console.log(nomeBD, telefoneBD, senhaBD)
+        const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
         const data = response.data
         console.log(data)
-    }   
+    }
 }

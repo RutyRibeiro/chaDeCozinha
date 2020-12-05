@@ -1,13 +1,12 @@
-
 const carregaProdutos = async () => {
-    const response = await axios.get('http://201.74.113.36:3001/')
+    const response = await axios.get('https://us-central1-casamento-thalita.cloudfunctions.net/app')
     const data = response.data
-    criaContainerItems(data.resultado);
+    criaContainerItems(data);
 }
 
-const criaContainerItems = (json) => {
+const criaContainerItems = async (json) => {
     const main = document.querySelector('main')
-    json.map(obj => {
+    await json.map(obj => {
         const containerItems = document.createElement('div')
         containerItems.classList.add('container-items')
 
@@ -67,4 +66,4 @@ const criaContainerItems = (json) => {
 
 }
 
-document.addEventListener('DOMContentLoaded', carregaProdutos)
+window.addEventListener('load', carregaProdutos)
