@@ -1,3 +1,18 @@
 {
-    "liveServer.settings.port": 3001
+    "liveServer.settings.port": 3001,
+    "launch": {
+
+        "configurations": [],
+        "compounds": []
+    },
+    "json.schemas": [
+    
+    ],
+    "[json]": {
+    
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    }
 }
