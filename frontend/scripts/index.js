@@ -51,9 +51,12 @@ const criaContainerItems = async (json) => {
 
         descriptionElements.appendChild(productDescription)
 
-        const sales = document.createElement('div')
+        const sales = document.createElement('a')
         sales.classList.add('sales')
         sales.innerText = 'Ver Ofertas'
+        const newName = obj.nome_produto.replaceAll(' ','+')
+        const link =`https://escorregaopreco.com.br/search/${newName}__sortBy-relevance+descending-true+page-1`
+        sales.href = link
 
 
         containerItems.appendChild(imageDescription)
