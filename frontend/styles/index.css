@@ -45,6 +45,7 @@
 
 
 main .sales {
+    text-decoration: none;
     width: 100%;
     background: #24d244;
     height: 35px;
