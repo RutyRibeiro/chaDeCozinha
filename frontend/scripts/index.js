@@ -45,7 +45,7 @@ const criaContainerItems = async (json) => {
         productDescription.classList.add('product-description')
 
         const textDescription = document.createElement('p')
-        textDescription.innerText = obj.descricao_produto;
+        textDescription.innerHTML = obj.descricao_produto;
 
         productDescription.appendChild(textDescription)
 
