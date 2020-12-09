@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/cadastro.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
 
     <link
         href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap"
@@ -27,19 +30,23 @@
                 <img src="./img/brasao.png" alt="Logo">
             </a>
 
-            <div class="container-user">
+            <a href="./login.html" class="container-user">
                 <div href="login.html" class="user-name">
                     <h4>Login</h4>
                 </div>
                 <div class="user-icon">
                     <div class="person-icon"></div>
                 </div>
-            </div>
+            </a>
         </div>
 
     </header>
     <main>
-        <div class=" container-items">
+        <div class="container-items">
+            <a href="./index.html" class="back-button">
+                <i
+                    class="large material-icons">arrow_back</i>
+            </a>
             <div class="container-info">
                 <h1 class="info">Cadastre-se</h1>
             </div>
@@ -78,7 +85,13 @@
                         class="form-input"
                         placeholder="Repita a senha">
                 </div>
+                <h4 class="cadastrado"> Já é cadastrado? <a
+                        class="voltar-login"
+                        href="./login.html">Voltar para
+                        a tela de Login</a></h4>
+
             </div>
+
             <a class="btn-cadastro"
                 id="btn-cadastrar">Cadastrar</a>
         </div>

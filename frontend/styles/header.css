@@ -74,6 +74,29 @@ header .wrapper-header {
     height: 100%;
 }
 
+
+.back-button {
+    background: #f1519c;
+    text-decoration: none;
+    position: absolute;
+    left: 4%;
+    top: 24px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+
+}
+
+.back-button i {
+    color: white;
+    font-size: 29px;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
 @media (max-width:415px) {
     header .wrapper-header {
         justify-content: start;
@@ -82,5 +105,14 @@ header .wrapper-header {
 
     .wrapper-header .container-user {
         width: 175px;
+    }
+
+    .container-info .info {
+        text-align: center;
+        margin-left: 25px;
+    }
+
+    .cadastrado {
+        text-align: center !important;
     }
 }

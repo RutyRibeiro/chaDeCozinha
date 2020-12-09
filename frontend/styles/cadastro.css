@@ -1,3 +1,7 @@
+.container-items {
+    position: relative;
+}
+
 .container-info .info {
     text-align: center;
 }
@@ -20,6 +24,20 @@
     padding-left: 10px;
 }
 
+
+.container-form .cadastrado {
+    text-align: right;
+}
+
+.cadastrado .voltar-login {
+    text-decoration: none;
+    color: #f1519c
+}
+
+.cadastrado .voltar-login:hover {
+    text-decoration: underline;
+}
+
 main .btn-cadastro {
     text-decoration: none;
     width: 100%;
@@ -40,6 +58,7 @@ main button:hover {
     background: #1c9f34;
     cursor: pointer;
 }
+
 
 @media (min-width:768px) {
     .container-form .form-input {
