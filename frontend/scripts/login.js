@@ -7,12 +7,10 @@ const button = document.querySelector('#btn-logar');
 
 button.addEventListener('click', login)
 
-function limpaCampos(parametro) {
-    parametro.value = ''
-}
+const limpaCampos = (parametro) => parametro.value = '';
 
 
-function login() {
+async function login() {
     const senha = document.querySelector('input#senha-login')
     const telefoneBD = (telefone.value.replaceAll(' ', '')).replace(/[^0-9]/g, '')
 
@@ -33,8 +31,23 @@ function login() {
             "senha": senhaBD,
             "telefone": telefoneBD
         }
-        console.log(usuario);
+
+        const response = await enviarLogin(usuario);
+
+        console.log(response)
+
     }
 
 
+}
+
+
+ const enviarLogin = async (body) => {
+    // const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app',{body})
+
+    const senha = body.senha
+    const telefone = body.telefone
+    const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/login',{telefone,senha})
+    const data = response.data
+    return data
 }
