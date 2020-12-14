@@ -1,7 +1,7 @@
 header {
     height: 75px;
     width: 100%;
-    background: linear-gradient(to bottom right, rgb(160, 51, 67) 5%, rgb(161, 71, 85) 15%, #d87685 54%);
+    background: linear-gradient(to bottom right, #a03343 5%, #a14755 15%, #d87685 54%);
     display: flex;
     align-items: center;
     justify-content: center;
