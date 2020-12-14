@@ -55,12 +55,14 @@ async function login() {
 }
 
 
- const enviarLogin = async (body) => {
-    // const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app',{body})
+const enviarLogin = async (body) => {
+     const senha = body.senha
+     const telefone = body.telefone
 
-    const senha = body.senha
-    const telefone = body.telefone
-    const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/login',{telefone,senha})
+
+    const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app',{telefone,senha})
+
+    // const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/login',{telefone,senha})
     const data = response.data
     return data
 }
