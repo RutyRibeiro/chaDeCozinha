@@ -60,7 +60,7 @@ const enviarLogin = async (body) => {
      const telefone = body.telefone
 
 
-    const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app',{telefone,senha})
+    const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app/login',{telefone,senha})
 
     // const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/login',{telefone,senha})
     const data = response.data
