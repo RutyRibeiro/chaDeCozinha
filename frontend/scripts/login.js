@@ -43,7 +43,7 @@ async function login() {
         else{
             const nome=response.nome
             const id = response.id
-            
+            console.log(nome,id)
             sessionStorage.setItem('id',id)
             sessionStorage.setItem('nome',nome)
     
