@@ -15,7 +15,6 @@ app.get("/", (req, res) => {
     conn.query(
       "SELECT * FROM produtos",
       (error, resultado, fields) => {
-        console.log(fields)
         if (error) return res.status(500).send({ error });
         res.status(200).send(resultado);
       }

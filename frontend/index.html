@@ -6,13 +6,13 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
     <title>Chá de cozinha T&A</title>
-    <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/header.css">
-    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/login.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap"
         rel="stylesheet">
@@ -23,31 +23,58 @@
 
 <body>
     <header>
-        <div class="wrapper-header" id="topo">
-            <div class="container-logo">
+        <div class="wrapper-header">
+            <a href="./index.html" class="container-logo">
                 <img src="./img/brasao.png" alt="Logo">
-            </div>
+            </a>
 
-            <a href="./login.html"
-                class="container-user">
+            <!-- <div class="container-user">
                 <div class="user-name">
-                    <h4>Login</h4>
+                    <h4 id="username">Login</h4>
                 </div>
                 <div class="user-icon">
                     <div class="person-icon"></div>
                 </div>
-            </a>
+            </div> -->
         </div>
 
     </header>
     <main>
-        <h2>Produtos Disponíveis</h2>
+        <div class="container-items">
+            <a href="./index.html" class="back-button">
+                <i
+                    class="large material-icons">arrow_back</i>
+            </a>
+            <div class="container-info">
+                <h1 class="info">Entrar</h1>
+            </div>
+            <div class="container-form">
+                <div class="container-tel">
+                    <label for="tel-login">Telefone:
+                    </label>
+                    <input type="text" class="form-input"
+                        id="tel-login"
+                        placeholder="(99) 9 9999-9999"
+                        maxlength="17">
+                </div>
+
+                <div class="container-senha">
+                    <label for="senha-login">Senha:
+                    </label>
+                    <input type="password" id="senha-login"
+                        class="form-input">
+                </div>
+            </div>
+            <div class="container-cadastrese">
+                <p>Não é cadastrado? <a
+                        href="./cadastro.html">Cadastre-se</a>
+                </p>
+
+            </div>
+            <button class="btn-login"
+                id="btn-logar">Login</button>
+        </div>
     </main>
-    <a href="#topo" class="backToTop">
-        <i class="large material-icons">
-            arrow_upward
-        </i>
-    </a>
     <div class="popup-error-container">
         <div class="popup-error">
             <h3>Erro</h3>
@@ -59,11 +86,13 @@
             </div>
         </div>
     </div>
-   
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"
         defer></script>
-    <script src="./scripts/index.js"></script>
+    <script
+        src='https://unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js'></script>
+    <script src="./scripts/login.js"></script>
+    <script src="./scripts/scripts.js"></script>
 </body>
 
 </html>

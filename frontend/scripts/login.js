@@ -34,18 +34,24 @@ async function login() {
 
         const response = await enviarLogin(usuario);
 
-        const nome=response.nome
-        const id = response.id
-        
-        sessionStorage.setItem('id',id)
-        sessionStorage.setItem('nome',nome)
-
-        console.log(sessionStorage.getItem('nome'),sessionStorage.getItem('id'))
-
-        window.location.href='./'
+        if (response.erro){
+            const popup = document.querySelector('.popup-error-container')
+            const msg = document.querySelector('.message')
+            popup.style.display = 'flex'   
+            msg.innerText = response.erro
+        }
+        else{
+            const nome=response.nome
+            const id = response.id
+            
+            sessionStorage.setItem('id',id)
+            sessionStorage.setItem('nome',nome)
+    
+            console.log(sessionStorage.getItem('nome'),sessionStorage.getItem('id'))
+            
+            window.location.href='./produtos.html' 
+        }
     }
-
-
 }
 
 

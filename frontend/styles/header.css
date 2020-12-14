@@ -107,6 +107,7 @@ header .wrapper-header {
     justify-content:center;
 
     padding-top:12vh;
+    display: none;
 }
 
 
@@ -119,6 +120,7 @@ header .wrapper-header {
     padding:20px;
     text-align: center;
     max-width:600px;
+    color:red;
 }
 
 .close-popup {
@@ -126,6 +128,11 @@ header .wrapper-header {
     top:20px;
     right:20px;
     color:red;
+    cursor: pointer;
+}
+
+p.message {
+    color:#282828;
 }
 
 
