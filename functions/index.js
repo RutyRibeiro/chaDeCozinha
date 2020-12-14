@@ -14,11 +14,13 @@ app.get("/", (req, res) => {
     if (error) return res.status(500).send({ error: "teste" });
     conn.query(
       "SELECT * FROM produtos",
-      (error, resultado, fiel5511962570745ds) => {
+      (error, resultado, fields) => {
+        console.log(fields)
         if (error) return res.status(500).send({ error });
         res.status(200).send(resultado);
       }
     );
+    conn.end;
   });
 });
 
@@ -40,11 +42,14 @@ app.post("/", (request, response) => {
         return response.status(200).send("Usuário cadastrado");
       }
     );
+    conn.end;
   });
 });
 
 app.post("/login", (req, res) => {
   const response = validate(req.body);
+  
+
   if (response.status == "erro") {
     const status = response.status;
     const message = response.message;
@@ -55,15 +60,14 @@ app.post("/login", (req, res) => {
     message,
     user: { telefone, senha },
   } = response;
-
   mysql.getConnection((error, conn) => {
     if (error) {
       return res.status(500).send({ erro: error });
     }
-
     conn.query(
-      `select senha from usuarios where telefone=${telefone}`,
+      `select id,senha,nome from usuarios where telefone='${telefone}'`,
       (error, result) => {
+        console.log(result)
         if (error) {
           return res.status(500).send({ erro: error });
         }
@@ -73,9 +77,13 @@ app.post("/login", (req, res) => {
         if (result[0].senha != senha){
             return res.status(200).send({"erro":"Senha incorreta"})
         }
-        return res.status(200).send("logado")
+        const id = result[0].id
+        const nome = result[0].nome
+        return res.status(200).send({id, nome})
       }
     );
+    conn.end;
+    
   });
 });
 exports.app = functions.https.onRequest(app);

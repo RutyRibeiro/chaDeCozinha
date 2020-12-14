@@ -34,8 +34,15 @@ async function login() {
 
         const response = await enviarLogin(usuario);
 
-        console.log(response)
+        const nome=response.nome
+        const id = response.id
+        
+        sessionStorage.setItem('id',id)
+        sessionStorage.setItem('nome',nome)
 
+        console.log(sessionStorage.getItem('nome'),sessionStorage.getItem('id'))
+
+        window.location.href='./'
     }
 
 

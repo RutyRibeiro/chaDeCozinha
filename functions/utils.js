@@ -1,8 +1,8 @@
 function validate (body){
+    
     try { 
         const senha = body.senha
         const telefone = body.telefone
-
         if (telefone == null || telefone == ''){
             console.log('telefone null or vazio')
             throw ('Telefone vazio')
