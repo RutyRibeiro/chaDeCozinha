@@ -50,6 +50,7 @@ main .container-orders {
 .sidemenu .my-data {
     margin-top:15px;
     background-color:#d87685;
+    text-decoration:none;
     
 }
 
@@ -69,6 +70,7 @@ main .container-orders {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 12px;
     transition: all 200ms linear;
+    padding:8px 2%;
 }
 
 
@@ -81,6 +83,7 @@ main .container-orders {
 .image-description .image-wrapper {
     width:100px;
     height: 100px;
+    padding:3px;
 }
 
 .image-wrapper img {
@@ -91,9 +94,9 @@ main .container-orders {
 
 .image-description .description-wrapper {
     padding:0 15px;
+    flex:1;
+    text-align: center;
 }
-
-
 
 .order .cancel {
     width: 100%;

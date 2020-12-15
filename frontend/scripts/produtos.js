@@ -1,4 +1,19 @@
 const main = document.querySelector("main");
+const popupLoading = document.querySelector('.popup-loading');
+const popupLoadingContainer = document.querySelector('.popup-loading-container');
+const textLoading = popupLoading.querySelector('h3');
+
+
+const loading = document.createElement('div');
+    loading.style.width = '90px';   
+    loading.id = 'loading'; 
+
+const loadingIcon = document.createElement('img');
+    loadingIcon.src = './img/loading-icon-white.svg';
+    loadingIcon.style.width = '100%';
+    loadingIcon.style.height = '100%';
+
+loading.appendChild(loadingIcon)
 
 const carregaProdutos = async () => {
   const loading = document.createElement("div");
@@ -106,24 +121,43 @@ const criaContainerItems = async (json) => {
 const sendConfirmBack = async (productID) => {
   const idProduto = productID.replace("product", "");
   const idUsuario = sessionStorage.getItem("id");
+  
+    popupLoadingContainer.style.display = 'flex';
+    document.body.style.overflow = "hidden";
+    popupLoadingContainer.style.height = document.body.offsetHeight + 'px';
+        popupLoading.appendChild(loading)
+        popupLoading.style.display = 'flex'
+        popupLoading.style.alignItems = 'center'
+        popupLoading.style.flexDirection = 'column'
+
   const response = await axios.post(
     "http://localhost:5001/casamento-thalita/us-central1/app/escolher",
     { idUsuario, idProduto }
   );
+  popupLoadingContainer.style.display='none'
 
   if (response.data.erro) {
     const popup = document.querySelector(".popup-error-container");
     const msg = document.querySelector(".message");
     popup.style.display = "flex";
-    document.body.style.overflow = "hidden";
     popup.style.height = document.body.offsetHeight + 'px';
-    msg.innerText = response.data.erro;
+    msg.innerHTML = response.data.erro + '<br/>' + 'A página será recarregada &#128540';
+    if (response.data.erro=='Não foi possível escolher este produto pois já foi escolhido por outro usuário') {
+      setTimeout(() => {
+        return (window.location.reload(false));
+    }, 2000);
+    }
   } else {
     const popup = document.querySelector(".popup-error-container");
+    popup.style.height = document.body.offsetHeight + 'px';
     const msg = popup.querySelector("h3");
-    document.body.style.overflow = "hidden";
     popup.style.display = "flex";
     msg.innerText = "Produto escolhido";
+    setTimeout(() => {
+        return (window.location.reload(false));
+    }, 2000);
+    
+
   }
 };
 

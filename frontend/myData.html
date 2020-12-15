@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/index.css">
+    <link rel="stylesheet" href="./styles/user.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap"
         rel="stylesheet">
@@ -29,9 +33,13 @@
     </header>
     <main>
         <div class="container-orders">
+            <a href="./produtos.html" class="back-button">
+                <i
+                    class="large material-icons">arrow_back</i>
+            </a>
             <div class="sidemenu">
-                <div id="meusPedidos" class="my-orders"></div>
-                <div id="meusDados" class="my-data"></div>
+                <div id="meusPedidos" onclick="hardCoded()" class="my-orders">Meus Pedidos</div>
+                <div id="meusDados" class="my-data">Meus Dados</div>
             </div>
             <div class="wrapper-info">
                 <div class="nome"> </div>
@@ -53,6 +61,13 @@
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"
         defer></script>
+
+
+        <script>
+            function hardCoded() {
+                window.location.href = './myorders.html'
+            }
+        </script>
         <script src="./scripts/popup.js"></script>
     </body>
 </body>

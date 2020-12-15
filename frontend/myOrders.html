@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="./styles/user.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+    <link
         href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap"
         rel="stylesheet">
     <link
@@ -30,33 +33,18 @@
     </header>
     <main>
         <div class="container-orders"> 
+            <a href="./produtos.html" class="back-button">
+                <i
+                    class="large material-icons">arrow_back</i>
+            </a>
             <div class="sidemenu">
                 <div id="meusPedidos" class="my-orders ">Meus Pedidos</div>
-                <div id="meusDados" class="my-data">Meus Dados</div>
+                <div  onclick="hardCoded()" id="meusDados" class="my-data">Meus Dados</div>
             </div>
             <div class="wrapper-items">
-                <div class="order"> 
-                    <div class="image-description"> 
-                        <div class="image-wrapper"> 
-                            <img src="https://www.sucatroca.com.br/site/src/images/placeholders/180x180.gif"> 
-                        </div>
-                        <div class="description-wrapper"> </div>
-                    </div>
-                    <button class="cancel">Cancelar Escolha 
+                
 
-                </div>
-
-                <div class="order"> 
-                    <div class="image-description"> 
-                        <div class="image-wrapper"> 
-                            <img src="https://www.sucatroca.com.br/site/src/images/placeholders/180x180.gif"> 
-                        </div>
-                        <div class="description-wrapper"> </div>
-                    </div>
-                    <button class="cancel">Cancelar Escolha 
-
-                </div>
-
+             
             </div>
         </div>
     </main>
@@ -71,9 +59,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function hardCoded() {
+            window.location.href = './mydata.html'
+        }
+    </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"
         defer></script>
-    <script src="./scripts/myorders.js"></script>
+
+        <script src="./scripts/myorders.js"></script>
 </body>
 
 
