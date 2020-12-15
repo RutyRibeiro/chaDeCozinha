@@ -94,7 +94,7 @@ header .wrapper-header {
     width: 100%;
 }
 
-.popup-error-container {
+.popup-error-container,.popup-loading-container, .popup-cadastrado-container {
     position:absolute;
     top:0;
     left:0;
@@ -111,7 +111,7 @@ header .wrapper-header {
 }
 
 
-.popup-error {
+.popup-error,.popup-loading,.popup-cadastrado {
     position:relative;
     width:90%;
     height:60%;
@@ -134,6 +134,8 @@ header .wrapper-header {
 p.message {
     color:#282828;
 }
+
+
 
 
 @media (max-width:415px) {

@@ -26,17 +26,8 @@
 <body>
     <header>
         <div class="wrapper-header">
-            <a href="./index.html" class="container-logo">
+            <a href="./produtos.html" class="container-logo">
                 <img src="./img/brasao.png" alt="Logo">
-            </a>
-
-            <a href="./login.html" class="container-user">
-                <div href="login.html" class="user-name">
-                    <h4 id="username">Login</h4>
-                </div>
-                <div class="user-icon">
-                    <div class="person-icon"></div>
-                </div>
             </a>
         </div>
 
@@ -87,7 +78,7 @@
                 </div>
                 <h4 class="cadastrado"> Já é cadastrado? <a
                         class="voltar-login"
-                        href="./login.html">Voltar para
+                        href="./index.html">Voltar para
                         a tela de Login</a></h4>
 
             </div>
@@ -107,11 +98,22 @@
             </div>
         </div>
     </div>
+    <div class="popup-cadastrado-container">
+        <div class="popup-cadastrado">
+            <h3>Usuario cadastrado</h3>
+            <p class="message-cadastrado">
+            </p>
+            <div class="close-popup">
+                <i
+                    class="large material-icons">close</i>
+            </div>
+        </div>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"
         defer></script>
     <script
         src='https://unpkg.com/vanilla-masker@1.1.1/build/vanilla-masker.min.js'></script>
-    <script src="./scripts/cadastro.js"></script>
+    <script src="./scripts/popup.js"></script>
 </body>
 
 </html>

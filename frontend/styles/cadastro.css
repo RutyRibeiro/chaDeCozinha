@@ -60,6 +60,11 @@ main button:hover {
 }
 
 
+header .wrapper-header {
+    justify-content: center;
+}
+
+
 @media (min-width:768px) {
     .container-form .form-input {
 

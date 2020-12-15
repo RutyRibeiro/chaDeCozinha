@@ -1,114 +1,98 @@
-const main = document.querySelector('main')
+const telefone = document.querySelector('input#tel-login');
+VMasker(telefone).maskPattern("(99) 9 9999-9999");
 
-const carregaProdutos = async () => {
-    const loading = document.createElement('div')
-    loading.style.width = '90px'
-    loading.id = 'loading'
-    const loadingIcon = document.createElement('img')
-    loadingIcon.src = './img/loading-icon.svg'
-    loadingIcon.style.width = '100%'
-    loadingIcon.style.height = '100%'
-
-    loading.appendChild(loadingIcon)
-    main.appendChild(loading)
-    const response = await axios.get('https://us-central1-casamento-thalita.cloudfunctions.net/app')
-    const data = response.data
-    criaContainerItems(data);
-}
-
-const criaContainerItems = async (json) => {
-    const loading = document.querySelector('#loading')
-    await json.map(obj => {
-        const containerItems = document.createElement('div')
-        containerItems.classList.add('container-items')
-
-        const imageDescription = document.createElement('div')
-        imageDescription.classList.add('image-description')
-
-        containerItems.appendChild(imageDescription)
-
-        const imgWrapper = document.createElement('div')
-        imgWrapper.classList.add('img-wrapper')
+const button = document.querySelector('#btn-logar');
+const popupLoading = document.querySelector('.popup-loading');
+const popupLoadingContainer = document.querySelector('.popup-loading-container');
+const textLoading = popupLoading.querySelector('h3');
 
 
-        const productImage = document.createElement('img')
-        productImage.classList.add('product-image')
-        productImage.src = obj.img_produto;
+const loading = document.createElement('div');
+    loading.style.width = '90px';   
+    loading.id = 'loading'; 
 
-        imgWrapper.appendChild(productImage)
+const loadingIcon = document.createElement('img');
+    loadingIcon.src = './img/loading-icon-white.svg';
+    loadingIcon.style.width = '100%';
+    loadingIcon.style.height = '100%';
 
-        imageDescription.appendChild(imgWrapper)
+loading.appendChild(loadingIcon)
 
-        const descriptionElements = document.createElement('div')
-        descriptionElements.classList.add('description-elements')
 
-        imageDescription.appendChild(descriptionElements)
+button.addEventListener('click', login)
 
-        const productName = document.createElement('div')
-        productName.classList.add('product-name')
+const limpaCampos = (parametro) => parametro.value = '';
 
-        const name = document.createElement('h4');
-        name.innerText = obj.nome_produto;
-        productName.appendChild(name)
 
-        descriptionElements.appendChild(productName)
+async function login() {
+    const senha = document.querySelector('input#senha-login')
+    const telefoneBD = (telefone.value.replaceAll(' ', '')).replace(/[^0-9]/g, '')
 
-        const productDescription = document.createElement('div')
-        productDescription.classList.add('product-description')
+    if (telefoneBD == '' || senha.value == '') {
+        alert('Preencha todos os campos!')
+    }
+    else if (telefoneBD < 12) {
+        console.log(telefoneBD.length)
+        alert('Por favor insira a quantidade correta de caracteres')
 
-        const textDescription = document.createElement('p')
-        textDescription.innerHTML = obj.descricao_produto;
+    }
+    else if ((senha.value).length < 5) {
+        alert('Senha muito curta!')
+        limpaCampos(senha)
+    } else {
+        const senhaBD = senha.value
+        const usuario = {
+            "senha": senhaBD,
+            "telefone": telefoneBD
+        }
+
+        popupLoadingContainer.style.display = 'flex';
         
-
-        productDescription.appendChild(textDescription)
-
-        descriptionElements.appendChild(productDescription)
-
-
-        const buttons = document.createElement('div')
-        buttons.classList.add('buttons')
-
-
-        const choose = document.createElement('a')
-        choose.classList.add('choose')
-        choose.id = `product${obj.id_produto}`
-        choose.innerText='Escolher'
-        choose.addEventListener('click',() => {
-            sendConfirmBack(choose.id,userID)
-        })
-
-
-        const sales = document.createElement('a')
-        sales.classList.add('sales')
-        sales.innerText = 'Ver Ofertas'
-        const newName = obj.nome_produto.replaceAll(' ','+')
-        const link =`https://escorregaopreco.com.br/search/${newName}__sortBy-relevance+descending-true+page-1`
-        sales.target = '_blank'
-        sales.href = link
-
-        buttons.appendChild(choose)
-        buttons.appendChild(sales)
-
-        containerItems.appendChild(imageDescription)
-        containerItems.appendChild(buttons)
-        main.appendChild(containerItems)
-    })
-
-    const backToTop = document.querySelector('.backToTop')
-    backToTop.classList.add('appear')
-
-  
-    loading.remove();
-}
-
-window.addEventListener('load', carregaProdutos)
-
-
-const sendConfirmBack = (productID, userID) => {
-    const id = productID.replace('product','')
-    console.log(userID,productID, id)
-}
-
-const verifyUser = () => {
     
+       
+    
+
+        const response = await enviarLogin(usuario);
+
+        if (response.erro){
+            const popup = document.querySelector('.popup-error-container')
+            const msg = document.querySelector('.message')        
+            popupLoadingContainer.style.display = 'none';
+            popup.style.display = 'flex'   ;
+            msg.innerText = response.erro
+
+            
+        }
+        else{
+            textLoading.innerText = 'Carregando Produtos...'
+            textLoading.style.color = 'black'
+            const nome = response.nome
+            const id = response.id
+            sessionStorage.setItem('id',id)
+            sessionStorage.setItem('nome',nome)
+            popupLoadingContainer.remove();
+    
+            
+            window.location.href='./produtos.html' 
+        }
+    }
+}
+
+
+const enviarLogin = async (body) => {
+    const senha = body.senha
+    const telefone = body.telefone
+    popupLoading.appendChild(loading)
+    popupLoading.style.display = 'flex'
+    popupLoading.style.alignItems = 'center'
+    popupLoading.style.flexDirection = 'column'
+    
+
+   
+
+    const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app/login',{telefone,senha})
+
+    // const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/login',{telefone,senha})
+    const data = response.data
+    return data
 }

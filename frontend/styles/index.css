@@ -1,58 +1,41 @@
-.container-items .image-description {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    width: 100%;
-
+.container-items {
+    position: relative;
 }
 
-.image-description .img-wrapper {
-    border-radius: 12px;
-    height: 180px;
-    width: 300px;
+.container-info {
+    margin-bottom: 20px;
+}
 
+.container-info .info {
     text-align: center;
 }
 
 
-.img-wrapper .product-image {
-    border-radius: 50%;
-    min-width: 100%;
-    height: 100%;
-    max-width:180px;
-}
-
-.image-description .description-elements {
-    margin: 0 32px;
+.container-items .container-form {
     width: 100%;
-}
-
-.description-elements .product-name {
-    margin-bottom: 16px;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.description-elements .product-description {
-    font-size: 12px;
-
-}
-
-.product-description p {
-    line-height:19px;
-    margin-bottom: 12px;
-    font-size:18px;
-    color:rgb(141, 60, 107);
-}
-
-.container-items .buttons {
     display: flex;
-    width: 100%;
+    justify-content: space-between;
+}
+
+
+
+.container-form div {
+    display: flex;
     align-items: center;
 }
-.buttons .sales {
-    text-decoration: none;
+
+.container-form input {
+    padding-left: 10px;
+    width: 80%;
+    height: 20px;
+}
+
+.container-form label {
+    min-width: 75px;
+}
+
+.container-items button {
+
     width: 100%;
     background: #24d244;
     height: 35px;
@@ -60,107 +43,66 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f1f1f1;
+    color: #f6f1f1;
     font-weight: bold;
     transition: all 0.2s linear;
+    margin-top: 15px;
+    border: 1px solid rgb(226, 223, 223);
+    margin-top: 15px;
+
+
+}
+
+.container-items button:hover,
+.container-items button:focus {
+    background: #1c9f34;
     cursor: pointer;
 }
 
-.buttons .sales:hover {
-    background: #1c9f34;
-}
-
-.buttons .choose {
-    text-decoration: none;
+.container-cadastrese {
+    margin-top: 20px;
     width: 100%;
-    background: #a14755;
-    height: 35px;
-    border-radius: 6px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: #f1f1f1;
-    font-weight: bold;
-    transition: all 0.2s linear;
-    margin-right: 10px;
-    cursor:pointer
-}   
-
-.buttons .choose:hover {
-    background-color:#813541;
-}   
-
-
-.backToTop {
-    cursor:pointer;
-    position:fixed;
-    right:2%;
-    bottom:3%;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(to bottom right, rgb(160, 51, 67) 18%, rgb(161, 71, 85) 20%, #d87685 54%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    text-decoration:none;
-    opacity:0;
-    transition:opacity 1s linear;
 }
 
-.backToTop i {
-    color:#FFF;
-    font-size:60px;
+.container-cadastrese a {
+    text-decoration: none;
+    color: #f1519c
 }
 
-.appear {
-    opacity:1;
+.container-cadastrese a:hover {
+    text-decoration: underline;
 }
 
+header .wrapper-header {
+    justify-content:center;
+}
 
 @media (max-width:768px) {
-    main .container-items {
-        max-width: 500px;
-        height: auto;
-        align-items: center;
-    }
 
-    .container-items .image-description {
-        display: flex;
+    .container-items .container-form {
         flex-direction: column;
-        align-items: center;
-        margin: 0;
+        justify-content: center;
+    }
 
+    .container-form div {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
 
     }
 
-    .image-description .img-wrapper {
-        height: 180px;
-        width: 180px;
+    .container-cadastrese {
+        justify-content: flex-end;
+        margin-top: 10px;
     }
-
-    .image-description .description-elements {
-        margin: 6px 0;
-    }
-
-    .description-elements .product-name {
-        text-align: center;
-    }
-
-
 }
 
-
 @media (max-width:320px) {
-    .description-elements .product-name {
-        margin-bottom: 16px;
-        font-weight: bold;
-        font-size: 20px;
-        text-align: center;
-    }
-    .image-description .img-wrapper {
-        height: 180px;
-        width: 180px;
-    }
+    .container-cadastrese {
+        font-size: 15px;
+        justify-content: center;
 
+    }
 }
