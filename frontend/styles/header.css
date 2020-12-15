@@ -112,7 +112,7 @@ header .wrapper-header {
 
 
 .popup-error,.popup-loading,.popup-cadastrado {
-    position:relative;
+    position:fixed;
     width:90%;
     height:60%;
     background:#FFF;
@@ -120,7 +120,9 @@ header .wrapper-header {
     padding:20px;
     text-align: center;
     max-width:600px;
+    max-height: 400px;
     color:red;
+    top:25%;
 }
 
 .close-popup {

@@ -11,8 +11,11 @@ const carregaProdutos = async () => {
 
   loading.appendChild(loadingIcon);
   main.appendChild(loading);
+//   const response = await axios.get(
+//     "https://us-central1-casamento-thalita.cloudfunctions.net/app"
+//   );
   const response = await axios.get(
-    "https://us-central1-casamento-thalita.cloudfunctions.net/app"
+    "http://localhost:5001/casamento-thalita/us-central1/app"
   );
   const data = response.data;
   criaContainerItems(data);
@@ -21,6 +24,8 @@ const carregaProdutos = async () => {
 const criaContainerItems = async (json) => {
   const loading = document.querySelector("#loading");
   await json.map((obj) => {
+      if(!obj.comprado == 1){
+
     const containerItems = document.createElement("div");
     containerItems.classList.add("container-items");
 
@@ -89,6 +94,7 @@ const criaContainerItems = async (json) => {
     containerItems.appendChild(imageDescription);
     containerItems.appendChild(buttons);
     main.appendChild(containerItems);
+}
   });
 
   const backToTop = document.querySelector(".backToTop");
@@ -109,11 +115,13 @@ const sendConfirmBack = async (productID) => {
     const popup = document.querySelector(".popup-error-container");
     const msg = document.querySelector(".message");
     popup.style.display = "flex";
+    document.body.style.overflow = "hidden";
     popup.style.height = document.body.offsetHeight + 'px';
     msg.innerText = response.data.erro;
   } else {
     const popup = document.querySelector(".popup-error-container");
     const msg = popup.querySelector("h3");
+    document.body.style.overflow = "hidden";
     popup.style.display = "flex";
     msg.innerText = "Produto escolhido";
   }
