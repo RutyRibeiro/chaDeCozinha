@@ -56,8 +56,8 @@ async function cadastrar() {
         popupLoading.style.alignItems = 'center'
         popupLoading.style.flexDirection = 'column'
 
-        // const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
-        const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
+        const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
+        // const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
         
         popupLoadingContainer.style.display='none'
         

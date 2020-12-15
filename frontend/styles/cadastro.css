@@ -52,11 +52,11 @@ main .btn-cadastro {
     transition: all 0.2s linear;
     margin-top: 15px;
     border: 1px solid rgb(226, 223, 223);
+    cursor: pointer;
 }
 
-main button:hover {
+main .btn-cadastro:hover {
     background: #1c9f34;
-    cursor: pointer;
 }
 
 
