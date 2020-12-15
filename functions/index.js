@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
       if (error) return res.status(500).send({ error });
       res.status(200).send(resultado);
     });
-    conn.end;
+    conn.release();
   });
 });
 
@@ -44,7 +44,7 @@ app.post("/cadastro", (request, response) => {
         return response.status(200).send("Usuário cadastrado");
       }
     );
-    conn.end;
+    conn.release();
   });
 });
 
@@ -83,7 +83,7 @@ app.post("/login", (req, res) => {
         return res.status(200).send({ id, nome });
       }
     );
-    conn.end;
+    conn.release();
   });
 });
 
@@ -103,7 +103,7 @@ app.post("/escolher", (req, res) => {
           return res.status(200).send({ erro: error.sqlMessage });
         }
         if (result[0].comprado == 1) {
-          console.log("a");
+          
           return res
             .status(200)
             .send({
@@ -118,7 +118,7 @@ app.post("/escolher", (req, res) => {
               return res.status(200).send({ erro: error.sqlMessage });
             }
             if (result[0].soma >= "2") {
-              console.log("b");
+              
               return res
                 .status(200)
                 .send({
@@ -148,6 +148,22 @@ app.post("/escolher", (req, res) => {
       }
     );
 
+    conn.release();
+  });
+});
+
+app.post("/meusPedidos", (req, res) => {
+  const id=req.body.idUsuario
+
+  mysql.getConnection((error, conn) => {
+    if (error) return res.status(500).send({ error: error});
+    
+    conn.query(`select * from produtos inner join usuario_produto on produtos.id_produto = usuario_produto.id_produto where id_usuario=${id};`, (error, resultado) => {
+      
+      if (error) return res.status(500).send({ error });
+      return res.status(200).send(resultado);
+
+    });
     conn.release();
   });
 });
