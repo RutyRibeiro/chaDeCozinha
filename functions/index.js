@@ -12,13 +12,10 @@ app.get("/", (req, res) => {
   console.log(req.connection.remoteAddress);
   mysql.getConnection((error, conn) => {
     if (error) return res.status(500).send({ error: "teste" });
-    conn.query(
-      "SELECT * FROM produtos",
-      (error, resultado, fields) => {
-        if (error) return res.status(500).send({ error });
-        res.status(200).send(resultado);
-      }
-    );
+    conn.query("SELECT * FROM produtos", (error, resultado, fields) => {
+      if (error) return res.status(500).send({ error });
+      res.status(200).send(resultado);
+    });
     conn.end;
   });
 });
@@ -37,10 +34,12 @@ app.post("/cadastro", (request, response) => {
       `insert into usuarios (nome, telefone, senha) values("${nome}","${telefone}","${senha}" )`,
       (error) => {
         if (error) {
-          if (error.errno == 1062){
-            return response.status(200).send({'erro':'Usuário já cadastrado com este telefone'});    
+          if (error.errno == 1062) {
+            return response
+              .status(200)
+              .send({ erro: "Usuário já cadastrado com este telefone" });
           }
-          return response.status(200).send({ erro: error.sqlMessage});
+          return response.status(200).send({ erro: error.sqlMessage });
         }
         return response.status(200).send("Usuário cadastrado");
       }
@@ -51,7 +50,6 @@ app.post("/cadastro", (request, response) => {
 
 app.post("/login", (req, res) => {
   const response = validate(req.body);
-  
 
   if (response.status == "erro") {
     const status = response.status;
@@ -70,23 +68,88 @@ app.post("/login", (req, res) => {
     conn.query(
       `select id,senha,nome from usuarios where telefone='${telefone}'`,
       (error, result) => {
-        console.log(result)
+        console.log(result);
         if (error) {
           return res.status(500).send({ erro: error });
         }
-        if (result == ''){
-            return res.status(200).send({"erro":"Usuário inexistente"})
+        if (result == "") {
+          return res.status(200).send({ erro: "Usuário inexistente" });
         }
-        if (result[0].senha != senha){
-            return res.status(200).send({"erro":"Senha incorreta"})
+        if (result[0].senha != senha) {
+          return res.status(200).send({ erro: "Senha incorreta" });
         }
-        const id = result[0].id
-        const nome = result[0].nome
-        return res.status(200).send({id, nome})
+        const id = result[0].id;
+        const nome = result[0].nome;
+        return res.status(200).send({ id, nome });
       }
     );
     conn.end;
-    
   });
 });
+
+app.post("/escolher", (req, res) => {
+  const idUsuario = req.body.idUsuario;
+  const idProduto = req.body.idProduto;
+
+  mysql.getConnection((error, conn) => {
+    if (error) {
+      console.log(error);
+      return res.status(200).send({ erro: error });
+    }
+    conn.query(
+      `select comprado from produtos where id_produto = ${idProduto}`,
+      (error, result) => {
+        if (error) {
+          return res.status(200).send({ erro: error.sqlMessage });
+        }
+        if (result[0].comprado == 1) {
+          console.log("a");
+          return res
+            .status(200)
+            .send({
+              erro:
+                "Não foi possível escolher este produto pois já foi escolhido por outro usuário",
+            });
+        }
+        conn.query(
+          `select count(*) as soma from usuario_produto where id_usuario = ${idUsuario}`,
+          (error, result) => {
+            if (error) {
+              return res.status(200).send({ erro: error.sqlMessage });
+            }
+            if (result[0].soma >= "2") {
+              console.log("b");
+              return res
+                .status(200)
+                .send({
+                  erro:
+                    "Você não pode escolher mais produtos, caso queira selecionar este, exclua alguma da sua lista ",
+                });
+            }
+            conn.query(
+              `insert into usuario_produto (id_usuario,id_produto) values ("${idUsuario}","${idProduto}")`,
+              (error) => {
+                if (error) {
+                  return res.status(200).send({ erro: error.sqlMessage });
+                }
+                conn.query(
+                  `update produtos set comprado = true where id_produto = ${idProduto}`,
+                  (error) => {
+                    if (error) {
+                      return res.status(200).send({ erro: error.sqlMessage });
+                    }
+                    return res.status(200).send("Produto Escolhido");
+                  }
+                );
+              }
+            );
+          }
+        );
+      }
+    );
+
+    conn.release();
+  });
+});
+
 exports.app = functions.https.onRequest(app);
