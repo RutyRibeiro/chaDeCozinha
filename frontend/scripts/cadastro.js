@@ -33,8 +33,18 @@ async function cadastrar() {
         const telefoneBD = (telefone.value.replaceAll(' ', '')).replace(/[^0-9]/g, '')
         const senhaBD = senha.value
         console.log(nomeBD, telefoneBD, senhaBD)
-        const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
+        const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
         const data = response.data
-        console.log(data)
+        if (response.erro){
+            const popup = document.querySelector('.popup-error-container')
+            const msg = document.querySelector('.message')        
+            popupLoadingContainer.style.display = 'none';
+            popup.style.display = 'flex'   ;
+            msg.innerText = response.erro
+        }
+        else{
+            const popup = document.querySelector('.popup-cadastrado-container')       
+            popup.style.display = 'flex'   ;
+        }
     }
 }

@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/", (request, response) => {
+app.post("/cadastro", (request, response) => {
   const nome = request.body.nome;
   const telefone = request.body.telefone;
   const senha = request.body.senha;
