@@ -1,5 +1,7 @@
-const close = document.querySelector('.close-popup')
-close.addEventListener('click', ()=>{
-    const popup = document.querySelector('.popup-error-container')
-    popup.style.display = 'none'
+const close = document.querySelectorAll('.close-popup')
+
+Array.from(close).map( elemento => {
+    elemento.addEventListener('click', (event)=>{
+        event.path[3].style.display = 'none'
+    })
 })

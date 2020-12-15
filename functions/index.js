@@ -30,13 +30,17 @@ app.post("/cadastro", (request, response) => {
 
   mysql.getConnection((error, conn) => {
     if (error) {
-      return response.status(500).send({ erro: error });
+      console.log(error);
+      return response.status(200).send({ erro: error });
     }
     conn.query(
       `insert into usuarios (nome, telefone, senha) values("${nome}","${telefone}","${senha}" )`,
       (error) => {
         if (error) {
-          return response.status(500).send({ erro: error });
+          if (error.errno == 1062){
+            return response.status(200).send({'erro':'Usuário já cadastrado com este telefone'});    
+          }
+          return response.status(200).send({ erro: error.sqlMessage});
         }
         return response.status(200).send("Usuário cadastrado");
       }

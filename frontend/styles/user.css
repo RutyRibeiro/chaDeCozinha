@@ -1,0 +1,43 @@
+main .container-orders {
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    background-color: rgb(251, 249, 249);
+    border-radius: 12px;
+    border: 1px solid #c33d5ffd;
+    box-shadow: rgba(63, 46, 46, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 15px;
+    margin: 24px 0;
+}
+.container-orders .sidemenu {
+    width:30%;
+    height:100%;
+    min-height: 100px;
+}
+
+
+.sidemenu div {
+    width:100%;
+    text-align:center;
+    background-color:purple;
+    color:#000;
+    font-weight:bold;
+    height:35px;
+    padding:5px 2%;
+    border-radius:5px;
+}
+
+
+.sidemenu .my-data {
+    margin-top:15px;
+
+}
+
+
+
+.selected {
+    background-color: #a14755;
+    color:white;
+}
