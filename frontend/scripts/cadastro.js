@@ -10,13 +10,13 @@ const textLoading = popupLoading.querySelector('h3');
 
 
 const loading = document.createElement('div');
-    loading.style.width = '90px';   
-    loading.id = 'loading'; 
+loading.style.width = '90px';
+loading.id = 'loading';
 
 const loadingIcon = document.createElement('img');
-    loadingIcon.src = './img/loading-icon-white.svg';
-    loadingIcon.style.width = '100%';
-    loadingIcon.style.height = '100%';
+loadingIcon.src = './img/loading-icon-white.svg';
+loadingIcon.style.width = '100%';
+loadingIcon.style.height = '100%';
 
 loading.appendChild(loadingIcon)
 
@@ -49,7 +49,7 @@ async function cadastrar() {
         const telefoneBD = (telefone.value.replaceAll(' ', '')).replace(/[^0-9]/g, '')
         const senhaBD = senha.value
         console.log(nomeBD, telefoneBD, senhaBD)
-        
+
         popupLoadingContainer.style.display = 'flex';
         popupLoading.appendChild(loading)
         popupLoading.style.display = 'flex'
@@ -58,20 +58,20 @@ async function cadastrar() {
 
         const response = await axios.post('https://us-central1-casamento-thalita.cloudfunctions.net/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
         // const response = await axios.post('http://localhost:5001/casamento-thalita/us-central1/app/cadastro', { "nome": nomeBD, "telefone": telefoneBD, "senha": senhaBD })
-        
-        popupLoadingContainer.style.display='none'
-        
+
+        popupLoadingContainer.style.display = 'none'
+
         const data = response.data
-       
-        if (data.erro){
+
+        if (data.erro) {
             const popup = document.querySelector('.popup-error-container')
-            const msg = document.querySelector('.message')       
-            popup.style.display = 'flex' ;
+            const msg = document.querySelector('.message')
+            popup.style.display = 'flex';
             msg.innerText = data.erro
         }
-        else{
-            const popup = document.querySelector('.popup-cadastrado-container')       
-            popup.style.display = 'flex'   ;
+        else {
+            const popup = document.querySelector('.popup-cadastrado-container')
+            popup.style.display = 'flex';
         }
     }
 }

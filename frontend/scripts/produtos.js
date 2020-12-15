@@ -5,13 +5,13 @@ const textLoading = popupLoading.querySelector('h3');
 
 
 const loading = document.createElement('div');
-    loading.style.width = '90px';   
-    loading.id = 'loading'; 
+loading.style.width = '90px';
+loading.id = 'loading';
 
 const loadingIcon = document.createElement('img');
-    loadingIcon.src = './img/loading-icon-white.svg';
-    loadingIcon.style.width = '100%';
-    loadingIcon.style.height = '100%';
+loadingIcon.src = './img/loading-icon-white.svg';
+loadingIcon.style.width = '100%';
+loadingIcon.style.height = '100%';
 
 loading.appendChild(loadingIcon)
 
@@ -39,77 +39,77 @@ const carregaProdutos = async () => {
 const criaContainerItems = async (json) => {
   const loading = document.querySelector("#loading");
   await json.map((obj) => {
-      if(!obj.comprado == 1){
+    if (!obj.comprado == 1) {
 
-    const containerItems = document.createElement("div");
-    containerItems.classList.add("container-items");
+      const containerItems = document.createElement("div");
+      containerItems.classList.add("container-items");
 
-    const imageDescription = document.createElement("div");
-    imageDescription.classList.add("image-description");
+      const imageDescription = document.createElement("div");
+      imageDescription.classList.add("image-description");
 
-    containerItems.appendChild(imageDescription);
+      containerItems.appendChild(imageDescription);
 
-    const imgWrapper = document.createElement("div");
-    imgWrapper.classList.add("img-wrapper");
+      const imgWrapper = document.createElement("div");
+      imgWrapper.classList.add("img-wrapper");
 
-    const productImage = document.createElement("img");
-    productImage.classList.add("product-image");
-    productImage.src = obj.img_produto;
+      const productImage = document.createElement("img");
+      productImage.classList.add("product-image");
+      productImage.src = obj.img_produto;
 
-    imgWrapper.appendChild(productImage);
+      imgWrapper.appendChild(productImage);
 
-    imageDescription.appendChild(imgWrapper);
+      imageDescription.appendChild(imgWrapper);
 
-    const descriptionElements = document.createElement("div");
-    descriptionElements.classList.add("description-elements");
+      const descriptionElements = document.createElement("div");
+      descriptionElements.classList.add("description-elements");
 
-    imageDescription.appendChild(descriptionElements);
+      imageDescription.appendChild(descriptionElements);
 
-    const productName = document.createElement("div");
-    productName.classList.add("product-name");
+      const productName = document.createElement("div");
+      productName.classList.add("product-name");
 
-    const name = document.createElement("h4");
-    name.innerText = obj.nome_produto;
-    productName.appendChild(name);
+      const name = document.createElement("h4");
+      name.innerText = obj.nome_produto;
+      productName.appendChild(name);
 
-    descriptionElements.appendChild(productName);
+      descriptionElements.appendChild(productName);
 
-    const productDescription = document.createElement("div");
-    productDescription.classList.add("product-description");
+      const productDescription = document.createElement("div");
+      productDescription.classList.add("product-description");
 
-    const textDescription = document.createElement("p");
-    textDescription.innerHTML = obj.descricao_produto;
+      const textDescription = document.createElement("p");
+      textDescription.innerHTML = obj.descricao_produto;
 
-    productDescription.appendChild(textDescription);
+      productDescription.appendChild(textDescription);
 
-    descriptionElements.appendChild(productDescription);
+      descriptionElements.appendChild(productDescription);
 
-    const buttons = document.createElement("div");
-    buttons.classList.add("buttons");
+      const buttons = document.createElement("div");
+      buttons.classList.add("buttons");
 
-    const choose = document.createElement("a");
-    choose.classList.add("choose");
-    choose.id = `product${obj.id_produto}`;
-    choose.innerText = "Escolher";
-    choose.addEventListener("click", () => {
-      sendConfirmBack(choose.id);
-    });
+      const choose = document.createElement("a");
+      choose.classList.add("choose");
+      choose.id = `product${obj.id_produto}`;
+      choose.innerText = "Escolher";
+      choose.addEventListener("click", () => {
+        sendConfirmBack(choose.id);
+      });
 
-    const sales = document.createElement("a");
-    sales.classList.add("sales");
-    sales.innerText = "Ver Ofertas";
-    const newName = obj.nome_produto.replaceAll(" ", "+");
-    const link = `https://escorregaopreco.com.br/search/${newName}__sortBy-relevance+descending-true+page-1`;
-    sales.target = "_blank";
-    sales.href = link;
+      const sales = document.createElement("a");
+      sales.classList.add("sales");
+      sales.innerText = "Ver Ofertas";
+      const newName = obj.nome_produto.replaceAll(" ", "+");
+      const link = `https://escorregaopreco.com.br/search/${newName}__sortBy-relevance+descending-true+page-1`;
+      sales.target = "_blank";
+      sales.href = link;
 
-    buttons.appendChild(choose);
-    buttons.appendChild(sales);
+      buttons.appendChild(choose);
+      buttons.appendChild(sales);
 
-    containerItems.appendChild(imageDescription);
-    containerItems.appendChild(buttons);
-    main.appendChild(containerItems);
-}
+      containerItems.appendChild(imageDescription);
+      containerItems.appendChild(buttons);
+      main.appendChild(containerItems);
+    }
   });
 
   const backToTop = document.querySelector(".backToTop");
@@ -121,20 +121,20 @@ const criaContainerItems = async (json) => {
 const sendConfirmBack = async (productID) => {
   const idProduto = productID.replace("product", "");
   const idUsuario = sessionStorage.getItem("id");
-  
-    popupLoadingContainer.style.display = 'flex';
-    document.body.style.overflow = "hidden";
-    popupLoadingContainer.style.height = document.body.offsetHeight + 'px';
-        popupLoading.appendChild(loading)
-        popupLoading.style.display = 'flex'
-        popupLoading.style.alignItems = 'center'
-        popupLoading.style.flexDirection = 'column'
+
+  popupLoadingContainer.style.display = 'flex';
+  document.body.style.overflow = "hidden";
+  popupLoadingContainer.style.height = document.body.offsetHeight + 'px';
+  popupLoading.appendChild(loading)
+  popupLoading.style.display = 'flex'
+  popupLoading.style.alignItems = 'center'
+  popupLoading.style.flexDirection = 'column'
 
   const response = await axios.post(
-    "http://localhost:5001/casamento-thalita/us-central1/app/escolher",
+    "https://us-central1-casamento-thalita.cloudfunctions.net/app/escolher",
     { idUsuario, idProduto }
   );
-  popupLoadingContainer.style.display='none'
+  popupLoadingContainer.style.display = 'none'
 
   if (response.data.erro) {
     const popup = document.querySelector(".popup-error-container");
@@ -142,10 +142,10 @@ const sendConfirmBack = async (productID) => {
     popup.style.display = "flex";
     popup.style.height = document.body.offsetHeight + 'px';
     msg.innerHTML = response.data.erro + '<br/>' + 'A página será recarregada &#128540';
-    if (response.data.erro=='Não foi possível escolher este produto pois já foi escolhido por outro usuário') {
+    if (response.data.erro == 'Não foi possível escolher este produto pois já foi escolhido por outro usuário') {
       setTimeout(() => {
         return (window.location.reload(false));
-    }, 2000);
+      }, 2000);
     }
   } else {
     const popup = document.querySelector(".popup-error-container");
@@ -154,9 +154,9 @@ const sendConfirmBack = async (productID) => {
     popup.style.display = "flex";
     msg.innerText = "Produto escolhido";
     setTimeout(() => {
-        return (window.location.reload(false));
+      return (window.location.reload(false));
     }, 2000);
-    
+
 
   }
 };
