@@ -99,7 +99,7 @@ const criaContainerItems = async (json) => {
       sales.classList.add("sales");
       sales.innerText = "Ver Ofertas";
       const newName = obj.nome_produto.replaceAll(" ", "+");
-      const link = `https://escorregaopreco.com.br/search/${newName}__sortBy-relevance+descending-true+page-1`;
+      const link = `https://escorregaopreco.com.br/search/${newName}__sortBy-pricemin+descending-false+period-30day+page-1`;
       sales.target = "_blank";
       sales.href = link;
 
@@ -141,20 +141,24 @@ const sendConfirmBack = async (productID) => {
     const msg = document.querySelector(".message");
     popup.style.display = "flex";
     popup.style.height = document.body.offsetHeight + 'px';
-    msg.innerHTML = response.data.erro + '<br/>' + 'A página será recarregada &#128540';
+    msg.innerHTML = response.data.erro ;
     if (response.data.erro == 'Não foi possível escolher este produto pois já foi escolhido por outro usuário') {
+      msg.innerHTML+='<br/>' + 'A página será recarregada &#128540'
       setTimeout(() => {
-        return (window.location.reload(false));
-      }, 2000);
+        window.location.reload();
+      }, 4000);
     }
   } else {
     const popup = document.querySelector(".popup-error-container");
     popup.style.height = document.body.offsetHeight + 'px';
     const msg = popup.querySelector("h3");
     popup.style.display = "flex";
-    msg.innerText = "Produto escolhido";
+    msg.style.colo = '#000';
+    msg.innerHTML = "Produto escolhido" + '<br/>' + 'A página será recarregada &#128540';
+
     setTimeout(() => {
-      return (window.location.reload(false));
+        console.log('aqui')
+        window.location.reload();
     }, 2000);
 
 

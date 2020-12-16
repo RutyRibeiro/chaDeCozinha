@@ -9,11 +9,11 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  console.log(req.connection.remoteAddress);
+  
   mysql.getConnection((error, conn) => {
-    if (error) return res.status(500).send({ error: "teste" });
+    if (error) return res.status(200).send({ error: "teste" });
     conn.query("SELECT * FROM produtos", (error, resultado, fields) => {
-      if (error) return res.status(500).send({ error });
+      if (error) return res.status(200).send({ error });
       res.status(200).send(resultado);
     });
     conn.release();
@@ -54,7 +54,7 @@ app.post("/login", (req, res) => {
   if (response.status == "erro") {
     const status = response.status;
     const message = response.message;
-    return res.status(400).send({ status, message });
+    return res.status(200).send({ status, message});
   }
   const {
     status,
@@ -63,14 +63,14 @@ app.post("/login", (req, res) => {
   } = response;
   mysql.getConnection((error, conn) => {
     if (error) {
-      return res.status(500).send({ erro: error });
+      return res.status(200).send({ erro: error });
     }
     conn.query(
       `select id,senha,nome from usuarios where telefone='${telefone}'`,
       (error, result) => {
         console.log(result);
         if (error) {
-          return res.status(500).send({ erro: error });
+          return res.status(200).send({ erro: error });
         }
         if (result == "") {
           return res.status(200).send({ erro: "Usuário inexistente" });
@@ -156,16 +156,40 @@ app.post("/meusPedidos", (req, res) => {
   const id=req.body.idUsuario
 
   mysql.getConnection((error, conn) => {
-    if (error) return res.status(500).send({ error: error});
+    if (error) return res.status(200).send({ error: error});
     
     conn.query(`select * from produtos inner join usuario_produto on produtos.id_produto = usuario_produto.id_produto where id_usuario=${id};`, (error, resultado) => {
       
-      if (error) return res.status(500).send({ error });
+      if (error) return res.status(200).send({ error });
       return res.status(200).send(resultado);
 
     });
     conn.release();
   });
 });
+
+app.post("/cancelar", (req,res )=>{
+  const id = req.body.idProduto
+  
+  mysql.getConnection((error, conn)=>{
+    if (error) return res.status(200).send({ error: error});
+
+    conn.query(`delete from usuario_produto where id_produto=${id};`, (error) => {
+      
+      if (error) return res.status(200).send({ error });
+      
+      conn.query(`update produtos set comprado=false where id_produto=${id};`, (error) => {
+      
+        if (error) return res.status(200).send({ error });
+        return res.status(200).send('Pedido Cancelado')
+      });
+
+    });
+    conn.release();
+
+    
+  })
+
+})
 
 exports.app = functions.https.onRequest(app);

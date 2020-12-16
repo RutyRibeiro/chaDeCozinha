@@ -39,12 +39,9 @@
             </a>
             <div class="sidemenu">
                 <div id="meusPedidos" class="my-orders ">Meus Pedidos</div>
-                <div  onclick="hardCoded()" id="meusDados" class="my-data">Meus Dados</div>
             </div>
             <div class="wrapper-items">
                 
-
-             
             </div>
         </div>
     </main>
@@ -60,14 +57,17 @@
         </div>
     </div>
 
-    <script>
-        function hardCoded() {
-            window.location.href = './mydata.html'
-        }
-    </script>
+    <div class="popup-loading-container">
+        <div class="popup-loading">
+            <h3>&nbsp;</h3>
+            
+        </div>
+    </div>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"
         defer></script>
 
+        <script src="./scripts/popup.js"></script>
         <script src="./scripts/myorders.js"></script>
 </body>
 
