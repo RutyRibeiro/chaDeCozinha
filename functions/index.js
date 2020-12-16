@@ -117,7 +117,7 @@ app.post("/escolher", (req, res) => {
             if (error) {
               return res.status(200).send({ erro: error.sqlMessage });
             }
-            if (result[0].soma >= "2") {
+            if (result[0].soma >= "4") {
               
               return res
                 .status(200)
