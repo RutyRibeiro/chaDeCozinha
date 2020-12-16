@@ -77,6 +77,11 @@ async function cadastrar() {
             const msg = document.querySelector(".message");
             popup.style.display = "flex";
             msg.innerText = data.erro;
+            setTimeout(() => {
+                popup.style.display = 'none'
+                document.body.style.overflow = 'auto'
+
+            },3000)
         } else {
             const popup = document.querySelector(".popup-cadastrado-container");
             popup.style.display = "flex";

@@ -60,8 +60,11 @@ async function login() {
             popupLoadingContainer.style.display = 'none';
             popup.style.display = 'flex'   ;
             msg.innerText = response.erro
+            setTimeout(() => {
+                popup.style.display = 'none'
+                document.body.style.overflow = 'auto'
 
-            
+            },3000)
         }
         else{
             textLoading.innerText = 'Carregando Produtos...'

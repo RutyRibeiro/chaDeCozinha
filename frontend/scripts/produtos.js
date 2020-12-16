@@ -142,12 +142,21 @@ const sendConfirmBack = async (productID) => {
     popup.style.display = "flex";
     popup.style.height = document.body.offsetHeight + 'px';
     msg.innerHTML = response.data.erro ;
+    
     if (response.data.erro == 'Não foi possível escolher este produto pois já foi escolhido por outro usuário') {
       msg.innerHTML+='<br/>' + 'A página será recarregada &#128540'
       setTimeout(() => {
         window.location.reload();
       }, 4000);
     }
+    else {
+      setTimeout(() => {
+        popup.style.display = 'none'
+        document.body.style.overflow = 'auto'
+
+    },3000)
+    }
+    
   } else {
     const popup = document.querySelector(".popup-error-container");
     popup.style.height = document.body.offsetHeight + 'px';
@@ -157,7 +166,6 @@ const sendConfirmBack = async (productID) => {
     msg.innerHTML = "Produto escolhido" + '<br/>' + 'A página será recarregada &#128540';
 
     setTimeout(() => {
-        console.log('aqui')
         window.location.reload();
     }, 2000);
 
