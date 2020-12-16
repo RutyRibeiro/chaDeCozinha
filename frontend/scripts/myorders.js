@@ -94,7 +94,7 @@ const cancelarPedidio = async (produtoID) => {
     popupLoading.style.flexDirection = 'column'
 
     const response = await axios.post(
-        "http://localhost:5001/casamento-thalita/us-central1/app/cancelar",
+        "https://us-central1-casamento-thalita.cloudfunctions.net/app/cancelar",
         { idProduto }
     );
     
