@@ -39,77 +39,83 @@ const carregaProdutos = async () => {
 const criaContainerItems = async (json) => {
   const loading = document.querySelector("#loading");
   await json.map((obj) => {
-    if (!obj.comprado == 1) {
 
-      const containerItems = document.createElement("div");
-      containerItems.classList.add("container-items");
 
-      const imageDescription = document.createElement("div");
-      imageDescription.classList.add("image-description");
+    const containerItems = document.createElement("div");
+    containerItems.classList.add("container-items");
 
-      containerItems.appendChild(imageDescription);
+    const imageDescription = document.createElement("div");
+    imageDescription.classList.add("image-description");
 
-      const imgWrapper = document.createElement("div");
-      imgWrapper.classList.add("img-wrapper");
+    containerItems.appendChild(imageDescription);
 
-      const productImage = document.createElement("img");
-      productImage.classList.add("product-image");
-      productImage.src = obj.img_produto;
+    const imgWrapper = document.createElement("div");
+    imgWrapper.classList.add("img-wrapper");
 
-      imgWrapper.appendChild(productImage);
+    const productImage = document.createElement("img");
+    productImage.classList.add("product-image");
+    productImage.src = obj.img_produto;
 
-      imageDescription.appendChild(imgWrapper);
+    imgWrapper.appendChild(productImage);
 
-      const descriptionElements = document.createElement("div");
-      descriptionElements.classList.add("description-elements");
+    imageDescription.appendChild(imgWrapper);
 
-      imageDescription.appendChild(descriptionElements);
+    const descriptionElements = document.createElement("div");
+    descriptionElements.classList.add("description-elements");
 
-      const productName = document.createElement("div");
-      productName.classList.add("product-name");
+    imageDescription.appendChild(descriptionElements);
 
-      const name = document.createElement("h4");
-      name.innerText = obj.nome_produto;
-      productName.appendChild(name);
+    const productName = document.createElement("div");
+    productName.classList.add("product-name");
 
-      descriptionElements.appendChild(productName);
+    const name = document.createElement("h4");
+    name.innerText = obj.nome_produto;
+    productName.appendChild(name);
 
-      const productDescription = document.createElement("div");
-      productDescription.classList.add("product-description");
+    descriptionElements.appendChild(productName);
 
-      const textDescription = document.createElement("p");
-      textDescription.innerHTML = obj.descricao_produto;
+    const productDescription = document.createElement("div");
+    productDescription.classList.add("product-description");
 
-      productDescription.appendChild(textDescription);
+    const textDescription = document.createElement("p");
+    textDescription.innerHTML = obj.descricao_produto;
 
-      descriptionElements.appendChild(productDescription);
+    productDescription.appendChild(textDescription);
 
-      const buttons = document.createElement("div");
-      buttons.classList.add("buttons");
+    descriptionElements.appendChild(productDescription);
 
-      const choose = document.createElement("a");
-      choose.classList.add("choose");
+    const buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+
+    const choose = document.createElement("a");
+    if (obj.comprado == 1) {
+      choose.classList.add('alreadySelected')
+      choose.innerText = "Indisponível";
+    } else {
       choose.id = `product${obj.id_produto}`;
       choose.innerText = "Escolher";
       choose.addEventListener("click", () => {
         sendConfirmBack(choose.id);
       });
 
-      const sales = document.createElement("a");
-      sales.classList.add("sales");
-      sales.innerText = "Ver Ofertas";
-      const newName = obj.nome_produto.replaceAll(" ", "+");
-      const link = `https://escorregaopreco.com.br/search/${newName}__sortBy-pricemin+descending-false+period-30day+page-1`;
-      sales.target = "_blank";
-      sales.href = link;
-
-      buttons.appendChild(choose);
-      buttons.appendChild(sales);
-
-      containerItems.appendChild(imageDescription);
-      containerItems.appendChild(buttons);
-      main.appendChild(containerItems);
     }
+    choose.classList.add("choose");
+
+    const sales = document.createElement("a");
+    sales.classList.add("sales");
+    sales.innerText = "Ver Ofertas";
+    const newName = obj.nome_produto.replaceAll(" ", "+");
+    const link = `https://escorregaopreco.com.br/search/${newName}__sortBy-pricemin+descending-false+period-30day+page-1`;
+    sales.target = "_blank";
+    sales.href = link;
+
+    buttons.appendChild(choose);
+    buttons.appendChild(sales);
+
+    containerItems.appendChild(imageDescription);
+    containerItems.appendChild(buttons);
+    main.appendChild(containerItems);
+
   });
 
   const backToTop = document.querySelector(".backToTop");
@@ -141,10 +147,10 @@ const sendConfirmBack = async (productID) => {
     const msg = document.querySelector(".message");
     popup.style.display = "flex";
     popup.style.height = document.body.offsetHeight + 'px';
-    msg.innerHTML = response.data.erro ;
-    
+    msg.innerHTML = response.data.erro;
+
     if (response.data.erro == 'Não foi possível escolher este produto pois já foi escolhido por outro usuário') {
-      msg.innerHTML+='<br/>' + 'A página será recarregada &#128540'
+      msg.innerHTML += '<br/>' + 'A página será recarregada &#128540'
       setTimeout(() => {
         window.location.reload();
       }, 4000);
@@ -154,9 +160,9 @@ const sendConfirmBack = async (productID) => {
         popup.style.display = 'none'
         document.body.style.overflow = 'auto'
 
-    },3000)
+      }, 3000)
     }
-    
+
   } else {
     const popup = document.querySelector(".popup-error-container");
     popup.style.height = document.body.offsetHeight + 'px';
@@ -166,7 +172,7 @@ const sendConfirmBack = async (productID) => {
     msg.innerHTML = "Produto escolhido" + '<br/>' + 'A página será recarregada &#128540';
 
     setTimeout(() => {
-        window.location.reload();
+      window.location.reload();
     }, 2000);
 
 

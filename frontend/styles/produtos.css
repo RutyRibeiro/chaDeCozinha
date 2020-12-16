@@ -20,7 +20,7 @@
     border-radius: 50%;
     min-width: 100%;
     height: 100%;
-    max-width:180px;
+    max-width: 180px;
 }
 
 .image-description .description-elements {
@@ -40,10 +40,10 @@
 }
 
 .product-description p {
-    line-height:19px;
+    line-height: 19px;
     margin-bottom: 12px;
-    font-size:18px;
-    color:rgb(141, 60, 107);
+    font-size: 18px;
+    color: rgb(141, 60, 107);
 }
 
 .container-items .buttons {
@@ -51,6 +51,7 @@
     width: 100%;
     align-items: center;
 }
+
 .buttons .sales {
     text-decoration: none;
     width: 100%;
@@ -83,19 +84,31 @@
     font-weight: bold;
     transition: all 0.2s linear;
     margin-right: 10px;
-    cursor:pointer
-}   
+    cursor: pointer
+}
 
 .buttons .choose:hover {
-    background-color:#813541;
-}   
+    background-color: #813541;
+}
+
+.alreadySelected {
+    background: #2121214d !important;
+    outline: 0;
+    border: 0;
+    cursor: not-allowed !important;
+
+}
+
+.alreadySelected:hover {
+    background: rgba(33, 33, 33, 0.502) !important;
+}
 
 
 .backToTop {
-    cursor:pointer;
-    position:fixed;
-    right:2%;
-    bottom:3%;
+    cursor: pointer;
+    position: fixed;
+    right: 2%;
+    bottom: 3%;
     width: 50px;
     height: 50px;
     background: linear-gradient(to bottom right, rgb(160, 51, 67) 18%, rgb(161, 71, 85) 20%, #d87685 54%);
@@ -103,18 +116,18 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    text-decoration:none;
-    opacity:0;
-    transition:opacity 1s linear;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 1s linear;
 }
 
 .backToTop i {
-    color:#FFF;
-    font-size:60px;
+    color: #FFF;
+    font-size: 60px;
 }
 
 .appear {
-    opacity:1;
+    opacity: 1;
 }
 
 
@@ -160,6 +173,7 @@
         font-size: 20px;
         text-align: center;
     }
+
     .image-description .img-wrapper {
         height: 180px;
         width: 180px;
